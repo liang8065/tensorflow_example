@@ -3,8 +3,8 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 data_sets = input_data.read_data_sets('MNIST_data', one_hot=True)
 
-print data_sets.train.images.shape
-print data_sets.train.labels.shape
+print(data_sets.train.images.shape)
+print(data_sets.train.labels.shape)
 
 X = tf.placeholder(tf.float32, [None, 784])
 y = tf.placeholder(tf.float32, [None, 10])
@@ -23,12 +23,12 @@ accuracy = tf.reduce_mean(tf.cast(cross_prediction, tf.float32))
 with tf.Session() as sess:
     sess.run(init)
 
-    for i in xrange(1000):
+    for i in range(1000):
         images, labels = data_sets.train.next_batch(100)
         sess.run([train_step, cross_entropy], feed_dict={X:images, y:labels})
         if i % 20 == 0:
             #print "train accuracy: ", sess.run(accuracy, feed_dict={X: images, y:labels})
             #print "test accuracy: ", sess.run(accuracy, feed_dict={X: data_sets.test.images, y: data_sets.test.labels})
-            print "loss: ", sess.run(cross_entropy, feed_dict={X: images, y:labels})
+            print("loss: ", sess.run(cross_entropy, feed_dict={X: images, y:labels}))
 
-    print "\nfinal test accuracy: ", sess.run(accuracy, feed_dict={X: data_sets.test.images, y: data_sets.test.labels})
+    print("\nfinal test accuracy: ", sess.run(accuracy, feed_dict={X: data_sets.test.images, y: data_sets.test.labels}))

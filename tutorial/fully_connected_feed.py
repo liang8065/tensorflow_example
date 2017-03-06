@@ -39,7 +39,7 @@ def do_eval(sess,
     steps_per_epoch = data_set.num_examples // FLAGS.batch_size
     num_examples = steps_per_epoch * FLAGS.batch_size
 
-    for step in xrange(steps_per_epoch):
+    for step in range(steps_per_epoch):
         feed_dict = fill_placeholder(data_set, image_placeholder, label_placeholder)
         true_count += sess.run(eval_correct, feed_dict=feed_dict)
 
@@ -71,7 +71,7 @@ def run_training():
 
         summary_writer = tf.summary.FileWriter(FLAGS.train_dir, sess.graph)
 
-        for step in xrange(FLAGS.max_steps):
+        for step in range(FLAGS.max_steps):
             start_time = time.time()
 
             feed_dict = fill_placeholder(data_sets.train, image_placeholder, label_placeholder)

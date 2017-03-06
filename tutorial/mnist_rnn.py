@@ -45,8 +45,8 @@ def rnn(x, weights, biases):
     # 将基本单元连接成rnn网络
     # outputs, final_state = tf.nn.dynamic_rnn(lstm_cell, x_in, initial_state=init_state, time_major=False)
     outputs, final_state = tf.nn.dynamic_rnn(lstm_cell, x_in, time_major=False, dtype=tf.float32)
-    print tf.shape(outputs)
-    print tf.shape(final_state)
+    print(tf.shape(outputs))
+    print(tf.shape(final_state))
 
     # output_layer
     # results = tf.matmul(final_state[1], weights['out']) + biases['out']

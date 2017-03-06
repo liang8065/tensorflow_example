@@ -56,13 +56,13 @@ sess.run(tf.global_variables_initializer())
 cross_prediction = tf.equal(tf.argmax(ys, 1), tf.argmax(h_fc2, 1))
 accuracy = tf.reduce_mean(tf.cast(cross_prediction, tf.float32))
 
-for i in xrange(2001):
+for i in range(2001):
     images, labels = mnist.train.next_batch(100)
     sess.run(train_step, feed_dict={xs: images, ys: labels, keep_prob: 0.5})
 
     if i % 50 == 0:
-        print "train accuracy: ", sess.run(accuracy, feed_dict={xs: images, ys: labels, keep_prob: 1.0})
+        print("train accuracy: ", sess.run(accuracy, feed_dict={xs: images, ys: labels, keep_prob: 1.0}))
         # print "test accuracy: ", sess.run(accuracy, feed_dict={X: data_sets.test.images, y: data_sets.test.labels})
         # print "loss: ", sess.run(cross_entropy, feed_dict={xs: images, ys:labels, keep_prob:0.5})
 
-print "\nfinal test accuracy: ", sess.run(accuracy, feed_dict={xs: mnist.test.images, ys: mnist.test.labels, keep_prob: 1.0})
+print("\nfinal test accuracy: ", sess.run(accuracy, feed_dict={xs: mnist.test.images, ys: mnist.test.labels, keep_prob: 1.0}))
